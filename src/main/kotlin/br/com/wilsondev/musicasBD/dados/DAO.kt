@@ -22,8 +22,7 @@ abstract class DAO<TModel, TEntity>(protected val manager: EntityManager, protec
     private fun getEntityById(id: Int): TEntity {
         val query = manager.createQuery("FROM ${entityType.simpleName} WHERE id = :id",entityType)
         query.setParameter("id", id)
-        val entity = query.singleResult
-        return entity
+        return query.singleResult
     }
 
     open fun getById(id: Int): TModel {
